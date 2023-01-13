@@ -1,6 +1,6 @@
-# Fine-tune the pixplotml visualization for your image data
+# Fine-tune the pixplotml visualization to your image data
 
-Pixplot uses UMAP to cluster the images using a vector representation of each image. To fine-tune PixplotML we create this image vector file by training a classification ML model on your data. The code uses [Pytorch-Accelerated](https://github.com/Chris-hughes10/pytorch-accelerated) to easily and simply train this classification model. 
+PixplotML uses UMAP to cluster the images using a vector representation of each image. To fine-tune PixplotML we create this image vector file by training a classification ML model on your data. The code uses [Pytorch-Accelerated](https://github.com/Chris-hughes10/pytorch-accelerated) to easily and simply train this classification model. 
 
 Note: As we're training an ML image model we need to use a machine with a GPU and docker enabled with the NVIDIA extensions. 
 
