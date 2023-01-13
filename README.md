@@ -15,7 +15,7 @@ The repo contains:
 
 1. A PixplotML server. We have added tools helpful for labelling such as a legend, border colours representing the label, and functionality to update labels or flag images for removal. The original PixPlot uses a classification model trained on ImageNet but we find fine-tuning on your own data produces much more accurate visualizations. So we have added:
 
-2. A preparation step to customise the visualization to your image data. The preparation step uses your images and a metadata.csv file to train a PyTorch classification model and then output an image vectors file for clustering by Pixplot (using UMap). See [Fine-tune PixplotML for your own images](./prep_pixplot_files/README.md) for more details. The code to do this is in the prep_pixplot_files folder.
+2. A preparation step to customise the visualization to your image data. The preparation step uses your images and a metadata.csv file to train a PyTorch classification model and then output an image vectors file for clustering by PixplotML (using UMap). See [Fine-tune PixplotML for your own images](./prep_pixplot_files/README.md) for more details. The code to do this is in the prep_pixplot_files folder.
 (We use [Pytorch-Accelerated](https://github.com/Chris-hughes10/pytorch-accelerated) to easily and simply train a classification model) 
 
 The server requires the following files located in a folder:
