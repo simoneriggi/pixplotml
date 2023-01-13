@@ -1,4 +1,4 @@
-# PixPlot Visualization Tool for Image-based Machine Learning Projects
+# PixPlotML - A Visualization Tool for Image-based Machine Learning Projects
 
 An interactive and zoomable visualization of your whole dataset. This web-based tool, a modified version of the original [Pixplot](https://github.com/YaleDHLab/pix-plot), is valuable for object detection and classification projects to perform these tasks:
 1. Initial investigation and visualization of a labelled (or unlabelled) dataset.
@@ -15,21 +15,21 @@ The repo contains:
 
 1. A Pixplot server based on [PixPlot](https://github.com/YaleDHLab/pix-plot). We have added tools helpful for labelling such as a legend, border colours representing the label, and functionality to update labels or flag images for removal. The original PixPlot uses a classification model trained on ImageNet but we find fine-tuning on your own data produces much more accurate visualizations. So we have added:
 
-2. A preparation step to customise the visualization to your image data. The preparation step uses your images and a metadata.csv file to train a PyTorch classification model and then output an image vectors file for clustering by Pixplot (using UMap). See [Fine-tune Pixplot for your own images](./prep_pixplot_files/README.md) for more details. The code to do this is in the prep_pixplot_files folder.
+2. A preparation step to customise the visualization to your image data. The preparation step uses your images and a metadata.csv file to train a PyTorch classification model and then output an image vectors file for clustering by Pixplot (using UMap). See [Fine-tune PixplotML for your own images](./prep_pixplot_files/README.md) for more details. The code to do this is in the prep_pixplot_files folder.
 (We use [Pytorch-Accelerated](https://github.com/Chris-hughes10/pytorch-accelerated) to easily and simply train a classification model) 
 
-The Pixplot server requires the following files located in a folder:
+The server requires the following files located in a folder:
 
     metadata.csv - a file containing the image name, category (see below for more details).
     images/*.* - a sub folder containing the images to visualize
     image_vectors.npy - image vectors from a classification model backbone. (See below for more details)
     
-To create the image_vectors.npy for your images we provide code and instructions, see [Fine-tune Pixplot for your own images](./prep_pixplot_files/README.md) for more details. The code to do this is in the prep_pixplot_files folder.
+To create the image_vectors.npy for your images we provide code and instructions, see [Fine-tune PixplotML for your own images](./prep_pixplot_files/README.md) for more details. The code to do this is in the prep_pixplot_files folder.
 
 
 # Quickstart - visualizing the coco dataset bounding box images
 
-To quickly see Pixplot running on bounding box images extracted from the Coco dataset, you can follow this pre-created example which contains all the required files.
+To quickly see PixplotML running on bounding box images extracted from the Coco dataset, you can follow this pre-created example which contains all the required files.
 
 First, clone the repo and extract the zip file containing coco validation dataset bounding boxes
 
@@ -39,15 +39,15 @@ cd pixplotml
 unzip ./data/coco_trained.zip -d ./data/
 ```
 
-To run pixplot, there are two options: using Python with a new environment, or using Docker where the environment is managed for you.
+To run pixplotml, there are two options: using Python with a new environment, or using Docker where the environment is managed for you.
 
 ### Python quickstart
 
 1. Create a Python environment and install dependencies:
 
     ```bash
-    conda create --name=pixplot python=3.9
-    conda activate pixplot
+    conda create --name=pixplotml python=3.9
+    conda activate pixplotml
     cd pixplot_server
     pip install -r requirements.txt
     ```
@@ -75,13 +75,13 @@ Instead of manually creating a Python environment and performing the steps in th
 
     ```bash
     cd pixplot_server
-    docker build -t pixplot:1.0 .
+    docker build -t pixplotml:1.0 .
     ```
 
 2. Run pixplot
     ```bash
     cd data
-    docker run -v `pwd`/outputs:/data -p 8800:8800 pixplot:1.0 /data 8800 metadata.csv images/*.jpg
+    docker run -v `pwd`/outputs:/data -p 8800:8800 pixplotml:1.0 /data 8800 metadata.csv images/*.jpg
     ```
 
     Open a browser to: `http://localhost:8800/output`
@@ -100,10 +100,10 @@ Note that if you want to avoid re-running the preprocessing step then you must c
 
 ```
 docker ps -a
-docker commit <container_id> pixplot:2.0
+docker commit <container_id> pixplotml:2.0
 ```
 
-Then to run use the new docker image name pixplot:2.0
+Then to run use the new docker image name pixplotml:2.0
 
 
 # Metadata
