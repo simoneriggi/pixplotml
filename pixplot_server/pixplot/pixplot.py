@@ -268,10 +268,17 @@ def load_input_files(**kwargs):
     all_images = []
 
     image_paths = kwargs["images"]
-    image_root_path = Path(image_paths).parent
+    ##image_root_path = Path(image_paths).parent # COMMENTED BY SR
+    
+    #######  ADDED BY SR =======
+    # Load the image file list
+    with open(image_paths) as f:
+    	image_list= f.read().splitlines() 
+    #############################
 
     for idx, metadata in enumerate(all_metadata):
-        path = image_root_path / metadata["filename"]
+        #path = image_root_path / metadata["filename"] # COMMENTED BY SR
+        path= image_list[idx] # ADDED BY SR
         vec = vecs[idx, :]
 
         img = Image(path, **{"metadata": metadata, "vec": vec})
